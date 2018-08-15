@@ -1,0 +1,24 @@
+<div class="container  mt-5">
+  <ngx-spinner
+    bdColor="rgba(255, 255, 255)"
+    size="medium"
+    color="#000"
+    type="ball-spin">
+  </ngx-spinner>
+  <!--/ ngx-spinner-->
+  <app-add-new-post-form
+    class="card col-10 mx-auto border-dark mb-5"
+    id="form"
+    (onAddNewPost)="onAddPost($event)"
+    (onUpdateNewPost)="onUpdatePost($event)">
+  </app-add-new-post-form>
+  <!--/ app-add-new-post-form-->
+  <div class="row">
+    <app-post-item class="col col-6 mb-3" *ngFor="let post of posts" [post]="post" (editPost)="onEdit($event)"
+                   (deletePost)="onDelete($event)" (commentPost)="showReviews($event)">
+    </app-post-item>
+    <!--/ app-post-item-->
+  </div>
+  <!--/ row-->
+</div>
+<!--/ container-->
