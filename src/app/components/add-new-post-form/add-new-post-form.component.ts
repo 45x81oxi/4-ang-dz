@@ -44,9 +44,11 @@ export class AddNewPostFormComponent implements OnInit {
     this.postService.addPost(newPost).subscribe((data: Post) => {
       if (data.id) {
         this.onAddNewPost.emit(data);
+        this.spinner.hide();
         this.toastr.success('News successfully added', 'Message');
       }
     }, error => {
+      this.spinner.hide();
       this.toastr.error(error.message, 'Error');
     });
 
@@ -65,9 +67,11 @@ export class AddNewPostFormComponent implements OnInit {
       if (data.id) {
         this.onUpdateNewPost.emit(data);
         this.formData.id = 0;
+        this.spinner.hide();
         this.toastr.success('Post successfully updated', 'Message');
       }
     }, error => {
+      this.spinner.hide();
       this.toastr.error(error.message, 'Error');
     });
     this.onCancel();
