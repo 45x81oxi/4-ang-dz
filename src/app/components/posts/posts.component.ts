@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PostsService } from "../../services/posts.service";
-import { Post } from "../../models/Post";
-import { ToastrService } from "ngx-toastr";
+import { PostsService } from '../../services/posts.service';
+import { Post } from '../../models/Post';
+import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Comment } from "../../models/Comment";
+import { Comment } from '../../models/Comment';
 
 @Component({
   selector: 'app-posts',
@@ -17,8 +17,8 @@ export class PostsComponent implements OnInit {
 
   constructor(
     public  postService: PostsService,
-    public  toastr: ToastrService,
-    public  spinner: NgxSpinnerService
+              public  toastr: ToastrService,
+              public  spinner: NgxSpinnerService
   ) {}
 
   ngOnInit() {
@@ -60,7 +60,7 @@ export class PostsComponent implements OnInit {
   onUpdatePost(post: Post): void {
     this.posts.forEach((data) => {
       if (post.id === data.id) {
-        Object.assign( data, post);
+        Object.assign(data, post);
       }
     });
     this.spinner.hide();
@@ -74,15 +74,13 @@ export class PostsComponent implements OnInit {
 
   onDelete(id: number, index: number): void {
     this.spinner.show();
-    //Условие для удаления созданных постов
     if (id > 100) {
       this.posts.splice(index, 1);
       this.toastr.success('Post deleted success', 'Message');
       this.spinner.hide();
-    }//Удаление постов с запросом к серверу
-    else {
-      this.postService.deletePost(id).subscribe((data: Object) => {
-        this.posts = this.posts.filter(post => post.id != id);
+    } else {
+      this.postService.deletePost(id).subscribe(() => {
+        this.posts = this.posts.filter(post => post.id !== id);
         this.toastr.success('Post deleted success', 'Message');
         this.spinner.hide();
       }, error => {

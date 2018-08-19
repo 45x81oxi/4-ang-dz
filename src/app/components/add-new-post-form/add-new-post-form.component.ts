@@ -1,9 +1,9 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { NgForm } from "@angular/forms";
-import { Post } from "../../models/Post";
-import { PostsService } from "../../services/posts.service";
+import { NgForm } from '@angular/forms';
+import { Post } from '../../models/Post';
+import { PostsService } from '../../services/posts.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ToastrService } from "ngx-toastr";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-new-post-form',
@@ -17,8 +17,8 @@ export class AddNewPostFormComponent implements OnInit {
   @ViewChild('form') form: NgForm;
   formData: Post = {
     userId: 1,
-    title: "",
-    body: ""
+    title: '',
+    body: ''
   };
 
   constructor(
@@ -76,6 +76,7 @@ export class AddNewPostFormComponent implements OnInit {
     });
     this.onCancel();
   }
+
 
   onCancel(): void {
     this.postService.emitEditEvent({title: '', body: '', userId: 1});

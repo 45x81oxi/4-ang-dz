@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Post } from "../models/Post";
-import { environment } from "../../environments/environment";
-import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, Observable } from "rxjs/index";
-import { Comment } from "../models/Comment";
+import { Post } from '../models/Post';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs/index';
+import { Comment } from '../models/Comment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class PostsService {
-  private apiUrl = environment.api_url
+  private apiUrl = environment.api_url;
   private editTask: BehaviorSubject<Post> = new BehaviorSubject<Post>({title: '', body: '', userId: 1});
   public editTaskEvent = this.editTask.asObservable();
 

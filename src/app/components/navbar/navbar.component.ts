@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-brand = "News page";
+  brand = "News page";
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -44,7 +44,7 @@ export class PostItemComponent implements OnInit {
       body: post.body,
       userId: post.userId,
       id: post.id
-    }
+    };
     this.editPost.emit(updtPost);
   }
 
